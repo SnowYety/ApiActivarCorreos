@@ -60,9 +60,10 @@ export const updateFechaLimite = async(req,res)=>{
 
         const pool = await getConnectionPruebas();
         const updateFecha = await pool.request()
-        .input('fecha',sql.DateTime,fechaLimite)
+        .input('fecha',sql.Int,fechaLimite)
         .input('dias',sql.Int,dias)
         .query(querys.updateFecha);
+
 
         if(updateFecha.rowsAffected[0] === 1){
             res.json({
